@@ -35,7 +35,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -56,7 +55,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(363, 341);
+            this.listView1.Size = new System.Drawing.Size(363, 307);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -107,16 +106,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Name:";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(15, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(168, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "SET 24H COOLDOWN";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -132,12 +121,11 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Location = new System.Drawing.Point(381, 124);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 112);
+            this.panel2.Size = new System.Drawing.Size(201, 83);
             this.panel2.TabIndex = 9;
             // 
             // button6
@@ -157,14 +145,14 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.trackBar1);
-            this.panel3.Location = new System.Drawing.Point(381, 242);
+            this.panel3.Location = new System.Drawing.Point(381, 213);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(201, 111);
+            this.panel3.Size = new System.Drawing.Size(201, 106);
             this.panel3.TabIndex = 10;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(15, 75);
+            this.button5.Location = new System.Drawing.Point(15, 65);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(168, 23);
             this.button5.TabIndex = 9;
@@ -205,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 368);
+            this.ClientSize = new System.Drawing.Size(598, 338);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -233,7 +221,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button6;
