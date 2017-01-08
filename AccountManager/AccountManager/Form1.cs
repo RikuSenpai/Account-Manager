@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -63,33 +62,24 @@ namespace AccountManager
                         item.BackColor = Color.DeepPink;
                     }
 
-                /* Currently Dissabled till i find another way
-
                 foreach (var item in listView1.Items.Cast<ListViewItem>())
                     if (item.SubItems[2].Text.Length > 6)
                     {
-                        var myDateTime = DateTime.Parse(DateTime.Now.ToShortTimeString());
-                        long CurrentTime = Convert.ToInt64(myDateTime.ToString().Replace(".", "").Replace(":", "").Replace(" ", ""));
+                        var CurrentTime = DateTime.Now;
+                        var ConfigTime = DateTime.Parse(item.SubItems[2].Text);
 
-                        var uCConvertedTime = item.SubItems[2].Text.Replace(".", "").Replace(":", "").Replace(" ", "");
-                        long CConvertedTime = Convert.ToInt64(uCConvertedTime);
-
-                        if (CurrentTime >= CConvertedTime)
+                        if (CurrentTime >= ConfigTime)
                         {
                             item.SubItems[2].Text = "READY";
                             item.BackColor = Color.Green;
 
                             foreach (XmlNode subNode in AccountsContainer)
                                 if (subNode.Attributes.GetNamedItem("VALUE").InnerText.Equals(item.SubItems[0].Text))
-                                {
                                     subNode.ChildNodes[0].InnerText = "READY";
-                                }
 
                             doc.Save("Accounts.xml");
                         }
                     }
-
-                */
             }
             else
             {
@@ -119,9 +109,15 @@ namespace AccountManager
             ListViewItem itm;
 
             arr[0] = textBox1.Text;
+            arr[1] = "CLEAN";
+            arr[2] = "READY";
 
             itm = new ListViewItem(arr);
             listView1.Items.Add(itm);
+
+            foreach (var item in listView1.Items.Cast<ListViewItem>())
+                if (item.Text.Equals(textBox1.Text))
+                    item.BackColor = Color.Green;
 
             if (File.Exists("Accounts.xml"))
             {
