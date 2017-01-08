@@ -24,7 +24,7 @@ namespace AccountManager
             //Add column header
             listView1.Columns.Add("ACCOUNT NAME", 120);
             listView1.Columns.Add("BAN STATUS", 100);
-            listView1.Columns.Add("READY STATUS", 139);
+            listView1.Columns.Add("COOLDOWN STATUS", 139);
 
             if (File.Exists("Accounts.xml"))
             {
