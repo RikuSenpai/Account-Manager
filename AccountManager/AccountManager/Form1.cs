@@ -63,6 +63,8 @@ namespace AccountManager
                         item.BackColor = Color.DeepPink;
                     }
 
+                /* Currently Dissabled till i find another way
+
                 foreach (var item in listView1.Items.Cast<ListViewItem>())
                     if (item.SubItems[2].Text.Length > 6)
                     {
@@ -86,6 +88,8 @@ namespace AccountManager
                             doc.Save("Accounts.xml");
                         }
                     }
+
+                */
             }
             else
             {
