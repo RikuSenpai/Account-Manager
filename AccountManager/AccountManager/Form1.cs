@@ -15,35 +15,6 @@ namespace AccountManager
             InitializeComponent();
         }
 
-        //TODO: UNFINISHED
-        private void CheckCooldown()
-        {
-            var Expired = false;
-
-            var BW = new BackgroundWorker();
-            BW.DoWork += delegate
-            {
-                while (!Expired)
-                {
-                    var myDateTime = DateTime.Parse(DateTime.Now.ToShortTimeString());
-                    var CurrentTime = Convert.ToInt64(myDateTime.ToString());
-
-                    //TODO: UNFINISHED
-                    var ConfigTime = 24234234234;
-
-                    if (CurrentTime >= ConfigTime)
-                        Expired = true;
-                }
-            };
-
-            BW.RunWorkerCompleted += delegate
-            {
-                //TODO: UNFINISHED
-            };
-
-            BW.RunWorkerAsync();
-        }
-
         // Form Load Event
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -90,6 +61,30 @@ namespace AccountManager
                     else
                     {
                         item.BackColor = Color.DeepPink;
+                    }
+
+                foreach (var item in listView1.Items.Cast<ListViewItem>())
+                    if (item.SubItems[2].Text.Length > 6)
+                    {
+                        var myDateTime = DateTime.Parse(DateTime.Now.ToShortTimeString());
+                        long CurrentTime = Convert.ToInt64(myDateTime.ToString().Replace(".", "").Replace(":", "").Replace(" ", ""));
+
+                        var uCConvertedTime = item.SubItems[2].Text.Replace(".", "").Replace(":", "").Replace(" ", "");
+                        long CConvertedTime = Convert.ToInt64(uCConvertedTime);
+
+                        if (CurrentTime >= CConvertedTime)
+                        {
+                            item.SubItems[2].Text = "READY";
+                            item.BackColor = Color.Green;
+
+                            foreach (XmlNode subNode in AccountsContainer)
+                                if (subNode.Attributes.GetNamedItem("VALUE").InnerText.Equals(item.SubItems[0].Text))
+                                {
+                                    subNode.ChildNodes[0].InnerText = "READY";
+                                }
+
+                            doc.Save("Accounts.xml");
+                        }
                     }
             }
             else
