@@ -271,5 +271,47 @@ namespace AccountManager
                 }
             }
         }
+
+        // Set Custom Time
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select something first");
+                return;
+            }
+
+            var myDateTime = DateTime.Parse(DateTime.Now.ToShortTimeString());
+            myDateTime = myDateTime.AddHours(trackBar1.Value);
+
+            listView1.SelectedItems[0].SubItems[2].Text = myDateTime.ToString();
+            listView1.SelectedItems[0].SubItems[1].Text = "CLEAN";
+            listView1.SelectedItems[0].BackColor = Color.DeepPink;
+
+            if (File.Exists("Accounts.xml"))
+            {
+                var doc = new XmlDocument();
+                doc.Load("Accounts.xml");
+
+                var AccountsContainer = doc.DocumentElement.SelectSingleNode("/Informations/Accounts");
+
+                foreach (XmlNode subNode in AccountsContainer)
+                {
+                    if (subNode.Attributes.GetNamedItem("VALUE").InnerText.Equals(listView1.SelectedItems[0].Text))
+                    {
+                        subNode.ChildNodes[0].InnerText = myDateTime.ToString();
+                        subNode.ChildNodes[1].InnerText = "CLEAN";
+                    }
+
+                    doc.Save("Accounts.xml");
+                }
+            }
+        }
+
+        // Change Label Text when Trackbar Value Changes
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            label3.Text = trackBar1.Value.ToString();
+        }
     }
 }
