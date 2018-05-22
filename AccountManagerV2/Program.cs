@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AcountManagerRework
+namespace AccountManagerV2
 {
     static class Program
     {
@@ -14,7 +16,7 @@ namespace AcountManagerRework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form_Main());
         }
     }
 }
