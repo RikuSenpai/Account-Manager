@@ -153,7 +153,7 @@ namespace AccountManagerV2
 
                     matching_item.SubItems[1].Text = password;
                     matching_item.SubItems[2].Text = status;
-                    matching_item.SubItems[3].Text = !status.Equals("Cooldown") ? "" : expire_date.ToString();
+                    matching_item.SubItems[3].Text = status.Equals("Cooldown") ? expire_date.ToString() : "" ;
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace AccountManagerV2
                         return;
                     }
 
-                    this.ListView_Accounts.Items.Add(new ListViewItem(new[] { username, password, status, expire_date.ToString() }));
+                    this.ListView_Accounts.Items.Add(new ListViewItem(new[] { username, password, status, status.Equals("Cooldown") ? expire_date.ToString() : string.Empty }));
                 }
             }
             catch (Exception exception)
@@ -245,12 +245,12 @@ namespace AccountManagerV2
             if (accounts_container == null)
                 return;
 
+            accounts_container.RemoveAll();
+
             foreach (ListViewItem item in this.ListView_Accounts.Items)
             {
                 try
                 {
-                    accounts_container.RemoveAll();
-
                     var name_node = xml_doc.CreateElement("Name");
                     name_node.SetAttribute("VALUE", item.Text);
 
