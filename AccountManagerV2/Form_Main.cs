@@ -219,16 +219,16 @@ namespace AccountManagerV2
                 {
                     case "Ready":
                         item.BackColor = Color.LimeGreen;
-                        break;
+                        return;
                     case "Cooldown":
                         item.BackColor = Color.DeepSkyBlue;
-                        break;
+                        return;
                     case "Banned":
                         item.BackColor = Color.MediumVioletRed;
-                        break;
+                        return;
                     case "Unknown":
                         item.BackColor = Color.White;
-                        break;
+                        return;
                     default:
                         break;
                 }
